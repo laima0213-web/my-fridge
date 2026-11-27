@@ -98,8 +98,14 @@ h1 .grn{color:var(--mintInk)}
 .card h3{font-size:14.5px;color:#7A604E;margin-bottom:12px}
 
 /* ---------- 빠르게 추가하기 ---------- */
-.quick-h{display:flex;align-items:center;gap:6px;font-size:14.5px;color:#7A604E;margin-bottom:11px}
+.quick-h{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:14.5px;color:#7A604E;margin-bottom:11px}
+.quick-h .qlabel{display:flex;align-items:center;gap:6px;min-width:0}
 .quick-h .heart{color:var(--mintD);font-size:13px}
+.qedit{flex:none;display:inline-flex;align-items:center;gap:4px;font-size:11.5px;line-height:1;
+  padding:7px 11px;border-radius:999px;background:#FBF4E6;border:1.5px solid #F1E5CD;color:#9C8774;
+  transition:transform .12s}
+.qedit:active{transform:scale(.94)}
+.qchip-empty{font-size:12.5px;color:var(--sub2);padding:5px 2px 9px}
 .quick-chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:13px}
 .qchip{font-size:13px;line-height:1;padding:9px 14px;border-radius:999px;
   background:#FDF6E4;border:1.5px solid #F0DFB9;color:#95743C;
@@ -293,6 +299,21 @@ h1 .grn{color:var(--mintInk)}
 .pwhint{font-size:12px;color:#A18C7B;line-height:1.6;margin-bottom:4px}
 .pwhint b{color:var(--mintInk)}
 
+/* ---------- 빠르게 추가하기 편집 ---------- */
+.qlist{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.qrow{display:flex;align-items:center;gap:7px;font-size:13.5px;line-height:1;
+  padding:8px 8px 8px 14px;border-radius:999px;background:#FDF6E4;border:1.5px solid #F0DFB9;color:#95743C}
+.qrow:nth-child(5n+2){background:#EFF8F2;border-color:#D6EBDD;color:#4F8168}
+.qrow:nth-child(5n+3){background:#EDF5FC;border-color:#D9E8F6;color:#5786AE}
+.qrow:nth-child(5n+4){background:#FDF1EA;border-color:#F3DDD0;color:#B3765B}
+.qrow:nth-child(5n+5){background:#FCF0F0;border-color:#F3DFDF;color:#B87C7C}
+.qrow .qx{width:21px;height:21px;border-radius:50%;background:rgba(255,255,255,.8);
+  font-size:11px;display:grid;place-items:center;flex:none;color:inherit;opacity:.75}
+.qrow .qx:active{transform:scale(.9)}
+.qempty{background:#FBF5E9;border:1.5px dashed #E7D8BE;border-radius:16px;padding:18px 14px;
+  text-align:center;color:var(--sub);font-size:12.5px;line-height:1.65;margin-top:14px;width:100%}
+.qfoothint{font-size:11.5px;color:var(--sub2);line-height:1.6;margin-top:12px}
+
 /* ---------- 토스트 ---------- */
 .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:#6B5242;color:#FFFDF6;
   border-radius:16px;padding:12px 16px;font-size:13.5px;display:flex;align-items:center;gap:14px;
@@ -327,14 +348,11 @@ h1 .grn{color:var(--mintInk)}
       <div class="sechead"><h2><span class="sico">🧊</span>냉장실</h2><span class="cnt" id="count-fridge">0개</span></div>
       <div id="alert-fridge" class="alert" hidden></div>
       <div class="card">
-        <div class="quick-h">빠르게 추가하기 <span class="heart">♡</span></div>
-        <div class="quick-chips" data-quick="fridge">
-          <button class="qchip" type="button" data-name="달걀">달걀</button>
-          <button class="qchip" type="button" data-name="우유">우유</button>
-          <button class="qchip" type="button" data-name="두부">두부</button>
-          <button class="qchip" type="button" data-name="대파">대파</button>
-          <button class="qchip" type="button" data-name="김치">김치</button>
+        <div class="quick-h">
+          <span class="qlabel">빠르게 추가하기 <span class="heart">♡</span></span>
+          <button class="qedit" type="button" data-qedit="fridge">✏️ 편집</button>
         </div>
+        <div class="quick-chips" data-quick="fridge"></div>
         <form class="form" id="add-fridge" autocomplete="off">
           <input class="inp" id="fridge-name" placeholder="품목명을 입력하세요 (예: 딸기)">
           <div class="two">
@@ -352,14 +370,11 @@ h1 .grn{color:var(--mintInk)}
       <div class="sechead"><h2><span class="sico">❄️</span>냉동실</h2><span class="cnt" id="count-freezer">0개</span></div>
       <div id="alert-freezer" class="alert" hidden></div>
       <div class="card">
-        <div class="quick-h">빠르게 추가하기 <span class="heart">♡</span></div>
-        <div class="quick-chips" data-quick="freezer">
-          <button class="qchip" type="button" data-name="만두">만두</button>
-          <button class="qchip" type="button" data-name="냉동새우">냉동새우</button>
-          <button class="qchip" type="button" data-name="식빵">식빵</button>
-          <button class="qchip" type="button" data-name="블루베리">블루베리</button>
-          <button class="qchip" type="button" data-name="아이스크림">아이스크림</button>
+        <div class="quick-h">
+          <span class="qlabel">빠르게 추가하기 <span class="heart">♡</span></span>
+          <button class="qedit" type="button" data-qedit="freezer">✏️ 편집</button>
         </div>
+        <div class="quick-chips" data-quick="freezer"></div>
         <form class="form" id="add-freezer" autocomplete="off">
           <input class="inp" id="freezer-name" placeholder="품목명을 입력하세요 (예: 냉동 블루베리)">
           <div class="two">
@@ -452,6 +467,21 @@ h1 .grn{color:var(--mintInk)}
   </form>
 </div>
 
+<!-- 빠르게 추가하기 칩 편집 시트 -->
+<div class="sheet" id="quickSheet">
+  <div class="sheethead">
+    <div><h2 id="qs-title">빠르게 추가하기</h2><p>톡 누르면 바로 들어가는 재료 칩이에요</p></div>
+    <button class="close" data-close aria-label="닫기">✕</button>
+  </div>
+  <form class="form" id="qs-form" autocomplete="off">
+    <input class="inp" id="qs-input" placeholder="새 재료 (예: 오이)" maxlength="14">
+    <button class="btn" type="submit">+ 추가</button>
+  </form>
+  <div class="qlist" id="qs-list"></div>
+  <p class="qfoothint">칩을 빼도 냉장고에 이미 넣은 재료는 그대로 남아요.</p>
+  <button class="btn ghost" type="button" id="qs-reset">기본값으로 초기화</button>
+</div>
+
 <!-- 가족과 함께 쓰기 시트 -->
 <div class="sheet" id="setSheet">
   <div class="sheethead">
@@ -509,6 +539,12 @@ const todayStr = ()=>ds(new Date());
 const DOW = ['일','월','화','수','목','금','토'];
 const LS_KEY = 'eunhye_fridge_v1';
 const LS_CLOUD = 'eunhye_fridge_cloud';
+/* 빠르게 추가하기 기본 칩 (냉장실 · 냉동실) */
+const QUICK_DEF = {
+  fridge:['달걀','우유','두부','대파','김치'],
+  freezer:['만두','냉동새우','식빵','블루베리','아이스크림']
+};
+const QKINDS = ['fridge','freezer'];
 
 function parseD(s){
   const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(String(s||''));
@@ -538,7 +574,9 @@ function syncDateBox(inputId){
    2. 저장 구조
    ============================================================ */
 function blank(){
-  return {v:1, updatedAt:0, items:{fridge:[],freezer:[],shopping:[],recipes:[]}, meals:{}, gone:{}};
+  return {v:1, updatedAt:0, items:{fridge:[],freezer:[],shopping:[],recipes:[]}, meals:{}, gone:{},
+    quick:{fridge:QUICK_DEF.fridge.slice(),freezer:QUICK_DEF.freezer.slice()},
+    quickU:{fridge:0,freezer:0}};
 }
 function normalize(o){
   const b=blank();
@@ -558,6 +596,16 @@ function normalize(o){
     }
   }
   if(o.gone&&typeof o.gone==='object') b.gone=Object.assign({},o.gone);
+  /* 빠르게 추가하기 칩 — 없으면 기본값, 빈 목록은 그대로 존중합니다 */
+  const q=(o.quick&&typeof o.quick==='object')? o.quick : null;
+  for(const k of QKINDS){
+    if(q && Array.isArray(q[k])){
+      const seen=new Set();
+      b.quick[k]=q[k].map(x=>String(x==null?'':x).replace(/\s+/g,' ').trim())
+        .filter(n=>{ if(!n||seen.has(n)) return false; seen.add(n); return true; }).slice(0,30);
+    }
+    b.quickU[k]=+(o.quickU && o.quickU[k])||0;
+  }
   return b;
 }
 function loadLocal(){
@@ -604,6 +652,12 @@ function mergeDocs(a,b){
       .filter(p=>!(out.gone['photo:'+p.id] && out.gone['photo:'+p.id]>=(+p.u||0)))
       .sort((x,y)=>(+x.c||+x.u||0)-(+y.c||+y.u||0));
     if(arr.length) out.meals[d]=arr;
+  }
+  /* 칩 목록은 마지막으로 고친 폰 것을 따릅니다 */
+  for(const k of QKINDS){
+    const at=+(a.quickU&&a.quickU[k])||0, bt=+(b.quickU&&b.quickU[k])||0;
+    if(bt>at){ out.quick[k]=b.quick[k].slice(); out.quickU[k]=bt; }
+    else     { out.quick[k]=a.quick[k].slice(); out.quickU[k]=at; }
   }
   out.updatedAt=Math.max(+a.updatedAt||0,+b.updatedAt||0);
   return out;
@@ -1160,6 +1214,8 @@ async function toggleCloud(){
 function renderAll(){
   renderItems('fridge');
   renderItems('freezer');
+  renderQuick('fridge');
+  renderQuick('freezer');
   renderShopping();
   renderRecipes();
   renderCalendar();
@@ -1204,6 +1260,15 @@ bindList('#list-fridge','fridge');
 bindList('#list-freezer','freezer');
 
 /* 빠르게 추가하기 칩 (톡 누르면 바로 넣기) */
+function renderQuick(kind){
+  const box=$('.quick-chips[data-quick="'+kind+'"]'); if(!box) return;
+  const list=(S.quick&&S.quick[kind])||[];
+  if(!list.length){
+    box.innerHTML='<span class="qchip-empty">칩이 없어요 · ✏️ 편집에서 추가해 보세요</span>';
+    return;
+  }
+  box.innerHTML=list.map(n=>`<button class="qchip" type="button" data-name="${esc(n)}">${esc(n)}</button>`).join('');
+}
 function quickAdd(kind,name){
   if(!name) return;
   const now=Date.now();
@@ -1216,6 +1281,63 @@ $$('.quick-chips').forEach(box=>{
     const b=e.target.closest('.qchip'); if(!b) return;
     quickAdd(box.dataset.quick, b.dataset.name);
   });
+});
+
+/* 빠르게 추가하기 칩 편집 */
+let qKind='fridge';
+function saveQuick(kind,arr){
+  S.quick[kind]=arr.slice(0,30);
+  S.quickU[kind]=Date.now();
+  touch(); save();
+  renderQuick(kind);
+  if($('#quickSheet').classList.contains('on') && qKind===kind) renderQuickSheet();
+}
+function renderQuickSheet(){
+  const box=$('#qs-list'); if(!box) return;
+  const list=S.quick[qKind]||[];
+  if(!list.length){
+    box.innerHTML='<div class="qempty">아직 칩이 없어요.<br>위에 재료를 적고 <b>+ 추가</b>를 눌러 보세요.</div>';
+    return;
+  }
+  box.innerHTML=list.map((n,i)=>`<span class="qrow">${esc(n)}<button class="qx" type="button" data-qdel="${i}" aria-label="${esc(n)} 빼기">✕</button></span>`).join('');
+}
+function openQuickEdit(kind){
+  qKind = kind==='freezer' ? 'freezer' : 'fridge';
+  $('#qs-title').textContent = (qKind==='fridge'?'🧊 냉장실':'❄️ 냉동실')+' 빠르게 추가하기';
+  $('#qs-input').value='';
+  renderQuickSheet();
+  openSheet('quickSheet');
+}
+$$('[data-qedit]').forEach(b=>b.addEventListener('click',()=>openQuickEdit(b.dataset.qedit)));
+$('#qs-form').addEventListener('submit',e=>{
+  e.preventDefault();
+  const el=$('#qs-input');
+  const name=el.value.replace(/\s+/g,' ').trim();
+  if(!name){ el.focus(); toast('재료 이름을 적어 주세요'); return; }
+  const list=(S.quick[qKind]||[]).slice();
+  if(list.includes(name)){ el.value=''; toast('이미 있는 칩이에요'); return; }
+  list.push(name);
+  el.value='';
+  saveQuick(qKind,list);
+  toast(`${name} 칩을 더했어요`);
+});
+$('#qs-list').addEventListener('click',e=>{
+  const b=e.target.closest('[data-qdel]'); if(!b) return;
+  const kind=qKind, i=+b.dataset.qdel;
+  const list=(S.quick[kind]||[]).slice();
+  if(i<0||i>=list.length) return;
+  const gone=list.splice(i,1)[0];
+  saveQuick(kind,list);
+  toast(`${gone} 칩을 뺐어요`,'되돌리기',()=>{
+    const back=(S.quick[kind]||[]).slice();
+    if(back.includes(gone)) return;
+    back.splice(Math.min(i,back.length),0,gone);
+    saveQuick(kind,back);
+  });
+});
+$('#qs-reset').addEventListener('click',()=>{
+  saveQuick(qKind,QUICK_DEF[qKind].slice());
+  toast('기본 칩으로 되돌렸어요');
 });
 
 /* 임박 알림 배너를 누르면 그 목록으로 */
